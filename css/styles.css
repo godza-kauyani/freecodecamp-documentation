@@ -1,4 +1,10 @@
 body
 {
-  font-size: 40pt;
+  font-size: 20pt;
+  height:100%;
+  padding:0;
+  margin:0;
+  display:grid;
+  grid-template-columns:1fr;
+  
 }
