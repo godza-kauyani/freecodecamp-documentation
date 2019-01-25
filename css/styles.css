@@ -1,10 +1,10 @@
 body{
   width:100vw;
   height:100%;
+  font-family:sans-serif ;
 }
 #container{
   width:100%;
-  background-color:Gray;
   display: flex;
   justify-content: space-between;
   
@@ -19,12 +19,17 @@ body{
   width:25%;
   height:40vh;
   top:0;
+  display:inline;
+  
+}
+a:visited:{
+  color:Orange;
 }
 header{
   text-decoration:bold;
   font-size:2em;
 }
-@media screen and (max-width 480px){
+@media screen  and (max-width: 480px){
   #container{
 	display:grid;
 	grid-template-row:20vh 1fr;
@@ -34,6 +39,7 @@ header{
   }
   #navbar{
 	grid-area:navbar;
+	position:relative;
   }
   #main-doc{
 	grid-area:main;
