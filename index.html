@@ -5,8 +5,118 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1">
   </head>
   <body>
+	<div id="container">
+	  <nav id="navbar">
+		<header></header>
+		<ul>
+		  <li ><a href="#Introduction" class="nav-link">Introduction</a></li>
+		  <li ><a href="#Syntax" class="nav-link">Syntax</a></li>
+		  <li ><a href="#Browser_Support" class="nav-link">Browser Support</a></li>
+		  <li ><a href="#Polyfill" class="nav-link"> Polyfill</a></li>
+		  <li ><a href="#Additional_Resources"class="nav-link">Additional Resources</a></li>
 
+		</ul>
+	  </nav>
+	  <main id="main-doc">
+		<section id="Introduction" class="main-section">
+		  <header>Introduction</header>
+		  <p>A conic gradient is similar to a radial gradient.
+			Both are circular and use the center of the element
+			as the source point for color stops. 
+			However, where the color stops of a radial gradient 
+			emerge from the center of the circle, a conic gradient
+			places them around the circle.</p>
+		  <p>They're called "conic" because they tend to look like 
+			the shape of a cone that is being viewed from above. 
+			Well, at least when there is a distinct angle provided 
+			and the contrast between the color values is great enough 
+			to tell a difference.</p>
 
-	<script src="js/bundle.js"></script>
+		</section>
+		<section id="Syntax" class="main-section">
+		  <header >Syntax</header>
+		  <p>The conic gradient syntax is easier to understand in plain English:
+          <div>Make a conic-gradient that is located at [some point]
+			that starts with [one color] at some angle and ends 
+			with [another color] at [some angle]
+	      </div>
+		  <p>The official specification looks more like this:</p>
+		  <code>conic-gradient() = conic-gradient([ from <angle> ]? [ at <position> ]?,
+				<angular-color-stop-list>
+				  )
+		  </code>
+
+		  <p>At its most basic level, it looks like this:</p>
+		  <code>.conic-gradient {
+			background: conic-gradient(#fff, #000);
+			}</code>
+		  <p>.. where it is assumed that the location of the 
+			gradient starts at the very center of the element (50% 50%) and 
+			is evenly distributed between white and black color values.</p>
+		  <p>If we do not specify an angle for the colors, then it is assumed 
+			that the gradient is evenly divided between the colors, starting
+			at 0deg and ending at 360deg. </p><p>
+			That kind of creates a hard stop where the colors bump right up to 
+			one another at 0deg and 360deg. If our starting color would begin
+			somewhere else on the circle, say one-quarter of the way at 90deg, 
+			then that creates a smoother gradient and we start to get that 
+			cool cone-looking perspective.</p>
+		  <code>.conic-gradient {
+			background: conic-gradient(from 90deg, #fff, #000);
+			}</code>
+		  <p>
+		</section>
+		<section id="Polyfill" class="main-section">
+		  <header>Polyfill</header>
+		  <p>Lea Verou provides a polyfill.</p>
+		  <ul><li>
+			  <a href="https://leaverou.github.io/conic-gradient/">Polyfill</a></li></ul>
+		  <p>To use include scripts</p>
+		  <code><script src="https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js"></script>
+			<script src="conic-gradient.js"></script></code>
+		  <p>Alternatively, you can use the API to directly get the SVG element generated 
+			and do whatever you want with it:</p>
+		  <code>var gradient = new ConicGradient({
+			stops: "gold 40%, #f06 0", // required
+			repeating: true, // Default: false
+			size: 400 // Default: Math.max(innerWidth, innerHeight)
+			});
+
+			console.log(gradient.svg); // SVG markup
+			console.log(gradient.png); // PNG image (fixed dimensions) as a data URL
+			console.log(gradient.dataURL); // data URL
+			console.log(gradient.blobURL); // blog URL
+		  </code>
+		</section>
+		<section id="Browser_Support" class="main-section">
+		  <header >Browser Support</header>
+		  <p>Click here for browser support<a href="http://caniuse.com/#feat=css-conic-gradients">Browser Support</a>
+		  </p>
+		</section>
+		<section id="Additional_Resources" class="main-section">
+		  <header >Additional Resources</header>
+		  <ul> 
+
+			<li><a href="https://www.w3.org/TR/css-images-4/#conic-gradients">Specs
+			  </a></li><p>This is the official specification where conic gradients are being introduced.</p>
+			<li><a href="https://css-tricks.com/conical-gradients-css/">
+				Conic gradints in css
+			  </a>
+			  <p>A CSS-Tricks post on the topic from 2013 with awesome examples.</p>
+			</li>
+			<li><a href="https://leaverou.github.io/conic-gradient/">
+				polyfil
+			  </a>
+			  <p>: Lea Verou has created a polyfill that makes conic gradients possible ahead of the official release.
+			  </p>
+			</li>
+			<li><a href="https://css-tricks.com/snippets/css/css-conic-gradient/">
+			  <p> Original post on css-tricks
+			</a>
+		  </ul>
+		</section>
+	  </main>
+	</div>
+	<script src="js/bundle.js"></script> 
   </body>
 </html>		
